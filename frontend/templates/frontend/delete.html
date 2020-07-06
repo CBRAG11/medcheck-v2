@@ -1,0 +1,42 @@
+<p>Sure? </p>
+<form method="POST" action="">-->
+  {% csrf_token %}
+  {{form}}
+  <input type="submit" name="delete_med" />
+</form>
+<a href="/">Cancel</a>
+
+<!-- templates/frontend/index.html -->
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+<!--  <title>Med Crud</title>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--<h1>asSS</h1>-->
+<!--<div>-->
+<!--  <form method="get" id="search">-->
+<!--    {{ filter.form.as_p }}-->
+<!--    <button type="submit">Search</button>-->
+<!--  </form>-->
+<!--</div>-->
+<!--  {% for med in filter.qs %}-->
+<!--  <div>-->
+<!--    <h1>{{med.med_name}}</h1>-->
+<!--    <a href="{% url 'delete' med.id %}">Delete</a>-->
+<!--  </div>-->
+<!--  {% endfor %}-->
+<!--<div>-->
+<!--  <a href="{% url 'predict' %}">Predict</a>-->
+<!--</div>-->
+<!--<div>-->
+<!--  <a href="{% url 'custom-predict' %}">Custom Predict</a>-->
+<!--</div>-->
+
+<!--</body>-->
+
+
+<!--</html>-->

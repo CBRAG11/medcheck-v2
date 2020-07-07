@@ -3,7 +3,7 @@
 from django.shortcuts import render, redirect
 from django.views.generic.detail import DetailView
 
-from meds.models import Med
+from meds.models import *
 from .forms import  UserForm
 from .forms import  MedForm
 from .filters import MedFilter
@@ -43,7 +43,10 @@ def deleteMed(request, pk):
     context = {'med': med}
     return render(request, 'frontend/delete.html', context)
 
-def predict(request):
+def deleteUser(request, pk):
+    user = User.objects.get(id=pk)
+    if user.delete():
+        return redirect('/')
     return render(request, 'frontend/predict.html')
 
 def customPrediction(request):

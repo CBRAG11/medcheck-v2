@@ -28,6 +28,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ml-auto">
+                        <li class="nav-item"><a class="nav-link js-scroll-trigger" style="color: #000000; !important" href=".">Home</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" style="color: #000000; !important" href="#services">Generic Check</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" style="color: #000000; !important" href="#portfolio">Personalized Check</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" style="color: #000000; !important" href="#about">About</a></li>
@@ -40,7 +41,7 @@
         <!-- Masthead-->
         <header class="masthead">
             <div class="container">
-                <div class="masthead-subheading" style="color: #000000;; !important">Welcome To MedCheck!</div>
+                <div class="masthead-subheading" style="color: #000000;; !important">We are MedCheck</div>
                 <div class="masthead-heading text-uppercase" style="color: #000000;; !important">Healthcare driven by IT!</div>
                 <a class="btn btn-primary btn-xl text-uppercase js-scroll-trigger" href="#services">Perform Drug Check</a>
             </div>
@@ -61,7 +62,7 @@
                                 <div class="form-group">
                                     {% csrf_token %}
                                     {{medForm|crispy}}
-                                <input type="submit" class="btn btn-success btn-sl name="addMed" value="Add Medication" />
+                                <input type="submit" class="btn btn-outline-success btn-sl name="addMed" value="Add Medication" />
                                 </div>
                             </form>
                             {% endblock %}
@@ -81,7 +82,7 @@
                                 <td>{{med.med_name}}</td>
                                 <td>{{med.avg_dosage}}</td>
                                 <td>{{med.category}}</td>
-                                <td> <a href="{% url 'delete' med.id %}"><input type=button class="btn btn-danger btn-sl text-uppercase" value='Delete' /></a>
+                                <td> <a href="{% url 'delete' med.id %}"><input type=button class="btn btn-outline-danger text-uppercase" value='Delete' /></a>
                                 </td>
                               </tr>
                               {% endfor %}
@@ -89,7 +90,7 @@
                             </table>
                             <div class="text-center">
                                 <div class="text-right">
-                                    <button onclick="validation();" type=button class="btn btn-primary btn-xl text-uppercase">Run Check</button>
+                                    <button onclick="validation();" type=button class="btn btn-outline-warning btn-lg text-uppercase">Run Check</button>
                                 </div> 
                                 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
                                 <script>
@@ -117,7 +118,7 @@
         <section class="page-section" id="portfolio">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Personalised Interaction Checker</h2>
+                    <h2 class="section-heading text-uppercase">Personalized Interaction Checker</h2>
                     <h3 class="section-subheading text-muted">Get recommendations specific to you!</h3>
                 </div>
                 <div class="row text-center">
@@ -138,9 +139,11 @@
                                     <label for="exampleInputPassword1">Known Allergies</label>
                                     <input type="text" class="form-control" id="allergies" placeholder="Enter known allergies" required>
                                   </div>
+                                <div class="form-group">
                                 <small id="emailHelp" class="form-text text-muted">We'll never share your data with anyone else, *Wink *  * Wink *</small>
+                                </div>
                                 <div class="text-right">
-                                    <button onclick="userValidation();" type=button class="btn btn-primary btn-xl text-uppercase">Run Check</button>
+                                    <button onclick="userValidation();" type=button class="btn btn-outline-warning btn-lg text-uppercase">Run Check</button>
                                 </div> 
                               </form>
 
@@ -157,12 +160,12 @@
                                     }
                                     var weight= document.getElementById('weight').value;
                                     if (weight == "") {
-                                        alert("Age must be filled out");
+                                        alert("Weight must be filled out");
                                         return false;
                                     }
                                     var allergies= document.getElementById('allergies').value;
                                     if (allergies == "") {
-                                        alert("Age must be filled out");
+                                        alert("Known allergies must be filled out");
                                         return false;
                                     }
 
@@ -172,8 +175,8 @@
                                     var drugs = JSON.parse(meds);
                                     console.log(drugs);
                                         drugs.forEach(drug => {
-                                        if (drug.fields.category != 'generic' || age < '10') {
-                                            swal("Harmful interaction detected!", "MedCheck", "error");
+                                        if (drug.fields.category != 'generic' || allergies != 'none') {
+                                            swal("Potentially harmful interaction detected!", "MedCheck", "error");
                                         }
                                         else {
                                             swal("No harmful interaction detected!", "MedCheck", "success");
@@ -197,7 +200,7 @@
                         <div class="team-member">
                             <img class="mx-auto rounded-circle" src="{% static 'frontend/assets/img/team/WilliamL.jpeg' %}" alt="" />
                             <h4>William Adams</h4>
-                            <p class="text-muted">CEO</p>
+                            <p class="text-muted">VP Marketing</p>
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
@@ -207,7 +210,7 @@
                         <div class="team-member">
                             <img class="mx-auto rounded-circle" src="{% static 'frontend/assets/img/team/ChanL.jpeg' %}" alt="" />
                             <h4>Chandrasekar Rao</h4>
-                            <p class="text-muted">CTO</p>
+                            <p class="text-muted">Chief Information Security Officer</p>
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
@@ -217,7 +220,7 @@
                         <div class="team-member">
                             <img class="mx-auto rounded-circle" src="{% static 'frontend/assets/img/team/ClintonL.png' %}" alt="" />
                             <h4>Clinton Braganza</h4>
-                            <p class="text-muted">Just a dev</p>
+                            <p class="text-muted">Chief Executive Officer</p>
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
@@ -227,7 +230,7 @@
                         <div class="team-member">
                             <img class="mx-auto rounded-circle" src="{% static 'frontend/assets/img/team/ArunaL.jpeg' %}" alt="" />
                             <h4>Aruna Sirangi</h4>
-                            <p class="text-muted">CFO</p>
+                            <p class="text-muted">Chief Financial Officer</p>
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-twitter"></i></a>
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-facebook-f"></i></a>
                             <a class="btn btn-dark btn-social mx-2" href="#!"><i class="fab fa-linkedin-in"></i></a>
@@ -254,7 +257,7 @@
                                 <h4>August 2019</h4>
                                 <h4 class="subheading">Our Humble Beginnings</h4>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">The first five years of CEO Clinton Braganzas tenure have been a period of transformation and growth for the company.</p></div>
+                            <div class="timeline-body"><p class="text-muted">The first five years of Clinton Braganza's tenure have been a period of transformation and growth for the company.</p></div>
                         </div>
                     </li>
                     <li class="timeline-inverted">
@@ -337,6 +340,14 @@
                     </div>
                 </form>
             </div>
+        </section>
+        <section>
+        <div class="container">
+            <div class="text-center">
+                <h2 class="section-heading text-uppercase">Disclaimer</h2>
+                <h5 class="section-subheading text-muted">The information contained herein should NOT be used as a substitute for the advice of an appropriately qualified and licensed physician or other health care provider. The information provided here is for informational purposes only. This tool may not cover all possible drug interactions. Please check with a physician if you have health questions or concerns. Although we attempt to provide accurate and up-to-date information, no guarantee is made to that effect.</h5>
+            </div>
+        </div>
         </section>
         <!-- Footer-->
         <footer class="footer py-4">

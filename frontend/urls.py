@@ -8,6 +8,6 @@ urlpatterns = [
     path('', index, name='index'),
     path('edit/<int:pk>', MedDetailView.as_view()),
     path('delete/<int:pk>', views.deleteMed, name='delete'),
-    path('predict', views.predict, name='predict'),
+    path('users/delete/<int:pk>', views.deleteUser),
     path('custom-predict', views.customPrediction, name='custom-predict'),
 ]
